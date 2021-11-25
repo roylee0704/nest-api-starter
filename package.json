@@ -18,7 +18,22 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/ormconfig.ts",
+    "migration:generate": "npm run typeorm -- migration:generate -f ormconfig -d src/database/migrations -n",
+    "migration:create": "npm run typeorm -- migration:create -f ormconfig -d src/database/migrations -n",
+    "migration:run": "npm run typeorm -- migration:run -f ormconfig",
+    "migration:revert": "npm run typeorm -- migration:revert -f ormconfig",
+    "schema:drop": "npm run typeorm -- schema:drop",
+    "schema:sync": "npm run typeorm -- schema:sync",
+    "schema:reset": "npm run schema:drop && npm run schema:sync",
+    "seed:config": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed -n src/ormconfig.ts",
+    "scripts:typeorm": "npx node ./node_modules/typeorm/cli.js --config ./dist/ormconfig.js",
+    "scripts:migration:run": "npm run scripts:typeorm -- migration:run",
+    "scripts:seed:run": "npx node ./node_modules/typeorm-seeding/dist/cli.js seed -n ./dist/ormconfig.js",
+    "scripts:seed:run:prod": "NODE_ENV=production npm run scripts:seed:run",
+    "seed:reset": "npm run schema:reset && npm run seed:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
