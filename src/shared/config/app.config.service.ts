@@ -38,10 +38,6 @@ export class AppConfigService implements AppConfig {
         return this.configService.get<string>('API_BASE_PATH') || this.activeConfig.apiBasePath;
     }
 
-    get adminBaseUrl(): string {
-        return this.configService.get<string>('ADMIN_BASE_URL');
-    }
-
     get port(): number {
         return this.configService.get<number>('PORT') || this.activeConfig.port;
     }
