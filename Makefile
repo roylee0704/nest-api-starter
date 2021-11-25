@@ -23,10 +23,10 @@ new-module:
 	nest g s $(name)
 
 start_db:
-	docker-compose -f .dev/docker-compose.db.yaml up --remove-orphans -d
+	docker-compose -f .dev/docker-compose.postgres.yaml up --remove-orphans -d
 
 stop_db:
-	docker-compose -f .dev/docker-compose.db.yaml down
+	docker-compose -f .dev/docker-compose.postgres.yaml down
 
 compose: stop_db start_db
 
@@ -34,7 +34,7 @@ clean:
 	rm -rf dist
 
 clean_db:
-	rm -rf .dev/db-data
+	rm -rf .dev/postgres
 
 dotenv:
 	cp .env.example .env
