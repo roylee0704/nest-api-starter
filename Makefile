@@ -68,3 +68,6 @@ start:
 
 print:
 	echo "$(AWS_ECR_REPO):$(IMAGE_TAG) $(CI_ENVIRONMENT_SLUG)"
+
+seed:
+	npm run seed:run
