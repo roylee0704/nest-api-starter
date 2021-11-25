@@ -59,11 +59,6 @@ module.exports = {
       "groups": ["builtin", "external", "parent", "sibling", "index"],
       "pathGroups": [
         {
-          "pattern": "@app/**",
-          "group": "external",
-          "position": "after"
-        },
-        {
           "pattern": "@shared/**",
           "group": "external",
           "position": "after"
