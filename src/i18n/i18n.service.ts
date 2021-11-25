@@ -2,6 +2,7 @@ import * as path from 'path';
 import { Injectable, OnModuleInit, HttpException } from '@nestjs/common';
 import { Handler, Request } from 'express';
 import i18next, { TFunction } from 'i18next';
+import * as i18nextIndex from 'i18next';
 import * as i18nextMiddleware from 'i18next-http-middleware';
 import * as ICU from 'i18next-icu';
 import * as Backend from 'i18next-node-fs-backend';
@@ -21,7 +22,7 @@ export interface I18nRequest extends Request {
 @Injectable()
 export class I18nService implements OnModuleInit {
     onModuleInit() {
-        return i18next
+        return i18nextIndex
             .use(i18nextMiddleware.LanguageDetector)
             .use(Backend)
             .use(ICU as any)
