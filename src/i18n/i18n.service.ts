@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { Injectable, OnModuleInit, HttpException } from '@nestjs/common';
 import { Handler, Request } from 'express';
-import i18next, { TFunction } from 'i18next';
+import { TFunction } from 'i18next';
 import * as i18nextIndex from 'i18next';
 import * as i18nextMiddleware from 'i18next-http-middleware';
 import * as ICU from 'i18next-icu';
@@ -40,7 +40,7 @@ export class I18nService implements OnModuleInit {
     }
 
     handle(): Handler {
-        return i18nextMiddleware.handle(i18next);
+        return i18nextMiddleware.handle(i18nextIndex as any);
     }
 
     /**
