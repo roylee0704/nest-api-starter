@@ -13,6 +13,9 @@
     "incremental": true,
     "resolveJsonModule": true,
     "paths": {
+      "@cqrs/*": [
+        "cqrs/*"
+      ],
       "@shared/*": [
         "shared/*"
       ]
